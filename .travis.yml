@@ -7,3 +7,16 @@ before_install:
 
 script:
   - docker run -e CI=true camposped/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react"
+  env: "Docker-react-env"
+  bucket_name: "elasticbeanstalk-us-east-2-295643758601"
+  pucket_page: "docker-react"
+  on: 
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  access_access_id: "$AWS_SECRET_KEY"
+
